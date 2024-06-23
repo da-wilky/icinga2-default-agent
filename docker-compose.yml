@@ -1,0 +1,18 @@
+services:
+  agent:
+    image: dr.swilk.eu/sw/icinga2
+    hostname: name-server
+    volumes:
+      - agent:/data
+      - /var/run/utmp:/var/run/utmp:ro # To see logged in users
+    networks:
+      - web
+
+volumes:
+  agent:
+    name: icinga2_agent
+    external: true
+
+networks:
+  web:
+    external: true
